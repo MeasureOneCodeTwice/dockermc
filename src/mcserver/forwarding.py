@@ -86,7 +86,7 @@ def main():
 def disconnectClient(fileDescriptors):
     clientSock = fileDescriptors[CLIENT_SOCK].close()
     fileDescriptors.pop(CLIENT_SOCK)
-    console.log("Client disconnected")
+    print("Client disconnected")
 
 def writeBufferedDataToClient(fileDescriptors):
     global content_buffer
