@@ -1,0 +1,14 @@
+FROM alpine:3.22.2
+
+RUN apk add wget
+RUN apk add openjdk21-jre
+RUN apk add bash
+
+WORKDIR /serverfiles
+
+COPY  initserver.sh ./
+COPY  runserver.sh  ./
+COPY  setupFIFOs.py ./
+COPY  forwarding.py ./
+
+ENTRYPOINT [ "./runserver.sh" ]
