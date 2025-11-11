@@ -1,5 +1,5 @@
 services:
-  test-server:
+  mcserver:
     build:
       context: src/mcserver
     ports: 
