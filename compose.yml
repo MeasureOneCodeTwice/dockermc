@@ -3,7 +3,7 @@ services:
     build:
       context: src/mcserver
     ports: 
-      - "12345:25565"
+      - "25566:25565"
       - "10000:25500"
     volumes:
       - testserverfiles:/serverfiles

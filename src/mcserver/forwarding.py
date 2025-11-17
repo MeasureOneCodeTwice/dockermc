@@ -47,7 +47,7 @@ def main():
         clientConnected = CLIENT_SOCK in fileDescriptors
         clientReady = clientConnected and fileDescriptors[CLIENT_SOCK] in readable
         if clientReady:
-            content = fileDescriptors[CLIENT_SOCK].recv(1024) 
+            content = readFromClient(fileDescriptors[CLIENT_SOCK])
             if not content:
                 disconnectClient(fileDescriptors)
             else:
@@ -82,6 +82,16 @@ def main():
                 
             if len(content_buffer) > MAX_CONTENT_BUFFER_LEN:
                 content_buffer = bytearray()
+
+def readFromClient(socket):
+    res = None
+    try:
+        res = socket.recv(1024)
+    except:
+        pass
+
+    return res
+
 
 def disconnectClient(fileDescriptors):
     clientSock = fileDescriptors[CLIENT_SOCK].close()
