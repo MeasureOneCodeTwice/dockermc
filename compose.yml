@@ -1,17 +1,20 @@
 services:
-  testmcserver:
+  mcserver:
     build:
-      context: src/mcserver
+      context: src
     ports: 
       - "25565:25565"
       - "25500:25500"
     volumes:
-      - testserverfiles:/serverfiles
+      - world-volume:/persistent-server-files
+      - config-files-volume:/config
     environment:
       SERVER_DOWNLOAD_URL: https://piston-data.mojang.com/v1/objects/95495a7f485eedd84ce928cef5e223b757d2f764/server.jar
+      POPULATE_VOLUMES: "true"
+      SERVER_ARGS: -Xmx1024M -Xms1024M
     restart: always
-    stdin_open: true
     tty: true
 
 volumes:
-  testserverfiles:
+  world-volume:
+  config-files-volume:
