@@ -1,3 +1,4 @@
+#!/bin/bash
 if [[ ! -f server.jar ]]; then
 	wget $(printenv SERVER_DOWNLOAD_URL) -O server.jar
 fi

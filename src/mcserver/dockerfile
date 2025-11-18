@@ -5,11 +5,12 @@ RUN apk add openjdk21-jre
 RUN apk add bash
 RUN apk add python3
 
-WORKDIR /serverfiles
+RUN mkdir /scripts
+COPY initserver.sh /scripts
+COPY runserver.sh  /scripts
+COPY setupFIFOs.py /scripts
+COPY forwarding.py /scripts
 
-COPY  initserver.sh ./
-COPY  runserver.sh  ./
-COPY  setupFIFOs.py ./
-COPY  forwarding.py ./
+COPY setup.sh /
 
-ENTRYPOINT [ "./runserver.sh" ]
+ENTRYPOINT [ "/setup.sh" ]
